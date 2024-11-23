@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
+import { cn } from "@/helpers/cn";
 import { Navbar } from "@/components";
 
 import "./globals.css";
@@ -28,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex`}>
+      <body className={cn("antialiased flex gap-2 bg-slate-800 text-slate-300", `${geistSans.variable} ${geistMono.variable}`)}>
         <Navbar />
         {children}
       </body>
