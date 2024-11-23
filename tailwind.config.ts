@@ -13,6 +13,9 @@ const config: Config = {
           800: "#171C2B",
         },
       },
+      fontFamily: {
+        sans: "var(--font-roboto)",
+      },
     },
   },
   plugins: [],

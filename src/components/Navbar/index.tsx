@@ -10,7 +10,7 @@ import { HomeIcon, GamepadIcon, FaceHappyIcon, RouteIcon, PrizeIcon } from '@/co
 export const Navbar = ({className, ...props}: NavbarProps) => {
   return (
     <nav 
-      className={cn("flex flex-col h-screen bg-slate-900 border-r border-indigo-400/20 hover:border-indigo-400/40 w-72 p-2 text-slate-300", className)} 
+      className={cn("fixed top-0 left-0 flex flex-col h-screen bg-slate-900 border-r border-indigo-400/20 hover:border-indigo-400/40 w-72 p-2 text-slate-300", className)} 
       {...props}
     >
       <div className="flex items-center justify-center pt-4">
