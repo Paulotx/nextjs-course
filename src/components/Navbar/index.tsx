@@ -1,9 +1,11 @@
-import { HomeIcon, GamepadIcon, FaceHappyIcon, RouteIcon, PrizeIcon } from '@/components';
+import Image from 'next/image';
 
 import { cn } from '@/helpers/cn';
 import { NavbarProps } from './types';
 import { NavbarList } from './NavbarList';
 import { NavbarListItemLink } from './NavbarListItemLink';
+
+import { HomeIcon, GamepadIcon, FaceHappyIcon, RouteIcon, PrizeIcon } from '@/components';
 
 export const Navbar = ({className, ...props}: NavbarProps) => {
   return (
@@ -12,9 +14,10 @@ export const Navbar = ({className, ...props}: NavbarProps) => {
       {...props}
     >
       <div className="flex items-center justify-center pt-4">
-        <img 
+        <Image 
+          width={112}
+          height={32}
           src="https://emersonbroga.com/e/assets/emersonbroga-logo-name-pink.png" alt="logo" 
-          className="w-auto h-12"
         />
       </div>
       
