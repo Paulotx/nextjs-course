@@ -1,44 +1,9 @@
 import { HomeIcon, GamepadIcon, FaceHappyIcon, RouteIcon, PrizeIcon } from '@/components';
 
 import { cn } from '@/helpers/cn';
-import Link from 'next/link';
-
-type NavbarProps = React.ComponentProps<'nav'>;
-type NavbarListProps = React.ComponentProps<'ul'>;
-type NavbarListItemProps = React.ComponentProps<'li'>;
-type NavbarListItemLinkProps = React.ComponentProps<typeof Link>;
-
-const NavbarList = ({ children, className, ...props }: NavbarListProps) => {
-  return (
-    <ul 
-      className={cn("my-4 border-t border-indigo-400/20 hover:border-indigo-400/40", className)}
-      {...props}
-    >
-      {children}
-    </ul>
-  );
-}
-
-const NavbarListItem = ({ children, className, ...props }: NavbarListItemProps) => {
-  return (
-    <li 
-      className={cn("flex gap-2 items-center my-2 rounded-lg bg-slate-transparent p-2 hover:bg-indigo-400/40 cursor-pointer hover:text-slate-100", className)}
-      {...props}
-    >
-      {children}
-    </li>
-  );
-}
-
-const NavbarListItemLink = ({ href, children, className, ...props }: NavbarListItemLinkProps) => {
-  return (
-    <NavbarListItem className={cn('p-0', className)}>
-      <Link href={href} className="flex gap-2 items-center rounded-lg w-full p-2" {...props}>
-        {children}
-      </Link>
-    </NavbarListItem>
-  );
-};
+import { NavbarProps } from './types';
+import { NavbarList } from './NavbarList';
+import { NavbarListItemLink } from './NavbarListItemLink';
 
 export const Navbar = ({className, ...props}: NavbarProps) => {
   return (
