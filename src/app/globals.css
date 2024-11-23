@@ -6,7 +6,4 @@
   .flex-center {
     @apply flex justify-center items-center;
   }
-  .rounded-left {
-    @apply rounded-tl-md rounded-bl-md
-  }
 }

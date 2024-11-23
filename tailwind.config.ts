@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         slate: {
-          800: "#171C2B",
+          890: "#152038",
         },
       },
       fontFamily: {
