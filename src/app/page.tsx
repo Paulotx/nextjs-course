@@ -1,15 +1,11 @@
 import Image from 'next/image';
 
-import { Article } from '@/libs/database/Articles';
+import { ArticleService } from '@/services/Articles';
 
 export default async function Home() {
-  const highlightedArticles = await Article.get({
-    limit: 4
-  });
-  const articles = await Article.get({
-    limit: 10,
-    offset: 4
-  });
+  const articles = await ArticleService.getHomeArticles({});
+  const latestArticles = await ArticleService.getHomeLatestArticles();
+  
   return (
     <div>
       <div className="w-full h-[35vh] bg-orange-400 flex flex-center">
@@ -18,7 +14,7 @@ export default async function Home() {
 
       <div className="container mx-auto mt-6 px-6">
         <div className="grid grid-cols-4 gap-4 h-[30vh]">
-          {highlightedArticles.map(article => (
+          {latestArticles.data.map(article => (
             <div key={article.id} className="flex-center relative overflow-hidden rounded-md">
               <div className='h-full w-full relative'>
                 <Image 
@@ -40,7 +36,7 @@ export default async function Home() {
       <div className="container mx-auto mt-6 px-6">
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-8 flex flex-col gap-4">
-            {articles.map(article => (
+            {articles.data.map(article => (
               <div key={article.id} className="flex bg-slate-900 rounded-md h-[200px] 2xl:h-[220px]">
                 <div className='h-full w-72 rounded-l-md relative'>
                   <Image 
@@ -58,6 +54,7 @@ export default async function Home() {
                 </div>
               </div>
             ))}
+            <div>Paginação</div>
           </div>
           <div className="col-span-4 bg-red-900 rounded-md">B</div>
         </div>

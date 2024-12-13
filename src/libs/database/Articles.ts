@@ -5,20 +5,8 @@ const prisma = new PrismaClient();
 const MAX_RECORDS = 50;
 const MIN_OFFSET = 0;
 
-type DBArticle = {
-  where?: object;
-  orderBy?: object;
-  limit?: number;
-  offset?: number;
-};
-
-const Article = {
-  get: async ({
-    where = {},
-    orderBy = {},
-    limit = 10,
-    offset = 0,
-  }: DBArticle) => {
+export const ArticleDB = {
+  get: async ({ where = {}, orderBy = {}, limit = 10, offset = 0 }) => {
     const take = Math.min(limit, MAX_RECORDS);
     const skip = Math.max(MIN_OFFSET, offset);
 
@@ -31,6 +19,11 @@ const Article = {
 
     return records;
   },
-};
+  count: async ({ where = {} }) => {
+    const records = await prisma.article.count({
+      where,
+    });
 
-export { Article };
+    return records;
+  },
+};
