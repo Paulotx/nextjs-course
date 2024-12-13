@@ -1,7 +1,15 @@
-import articles from '@/data/articles.json';
 import Image from 'next/image';
 
-export default function Home() {
+import { Article } from '@/libs/database/Articles';
+
+export default async function Home() {
+  const highlightedArticles = await Article.get({
+    limit: 4
+  });
+  const articles = await Article.get({
+    limit: 10,
+    offset: 4
+  });
   return (
     <div>
       <div className="w-full h-[35vh] bg-orange-400 flex flex-center">
@@ -10,7 +18,7 @@ export default function Home() {
 
       <div className="container mx-auto mt-6 px-6">
         <div className="grid grid-cols-4 gap-4 h-[30vh]">
-          {articles.splice(-4).map(article => (
+          {highlightedArticles.map(article => (
             <div key={article.id} className="flex-center relative overflow-hidden rounded-md">
               <div className='h-full w-full relative'>
                 <Image 
